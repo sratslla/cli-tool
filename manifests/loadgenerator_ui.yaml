@@ -11,3 +11,6 @@ spec:
       port: 8089
       targetPort: 8089
       nodePort: 30001
+    - protocol: TCP
+      port: 5557
+      targetPort: 5557 # Locust's WebSocket port

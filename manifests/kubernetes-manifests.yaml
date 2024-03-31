@@ -649,10 +649,9 @@ spec:
           value: "frontend:80"
         - name: USERS
           value: "10"
-        command:
-        - locust
-        args:
-        - "--web-port=8089"
+        ports:
+        - containerPort: 8089 # Expose Locust's web interface port
+        - containerPort: 5557 # Expose Locust's WebSocket port
 ---
 apiVersion: apps/v1
 kind: Deployment
