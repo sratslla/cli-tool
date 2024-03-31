@@ -12,7 +12,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// startCmd represents the start command
 var startCmd = &cobra.Command{
 	Use:   "start",
 	Short: "Start the benchmark process",
@@ -21,10 +20,8 @@ var startCmd = &cobra.Command{
 		fmt.Println("start called")
 		if isKubernetesClusterRunning() {
 			fmt.Println("Kubernetes cluster is running")
-			// Proceed with your logic for starting services/pods
 		} else {
 			fmt.Println("Kubernetes cluster is not running or accessible")
-			// Handle the case where Kubernetes cluster is not available
 		}
 		REPO_URL := "https://raw.githubusercontent.com/sratslla/cli-tool/main"
 		YAML_FILE_PATH := "manifests/kubernetes-manifests.yaml"
@@ -46,18 +43,15 @@ func init() {
 	rootCmd.AddCommand(startCmd)
 }
 func isKubernetesClusterRunning() bool {
-	// Execute kubectl command to get cluster info
 	cmd := exec.Command("kubectl", "cluster-info")
 
 	var output bytes.Buffer
 	cmd.Stdout = &output
 	err := cmd.Run()
 	if err != nil {
-		// Handle error, indicating Kubernetes cluster is not running or accessible
 		return false
 	}
-	// If the command executed successfully, assume Kubernetes cluster is running
-	fmt.Println(cmd, output.String())
+	// fmt.Println(cmd, output.String())
 	return true
 }
 
