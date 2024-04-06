@@ -27,6 +27,7 @@ var startCmd = &cobra.Command{
 		YAML_FILE_PATH := "manifests/kubernetes-manifests.yaml"
 		YAML_FILE_PATH2 := "manifests/loadgenerator_ui.yaml"
 		YAML_FILE_PATH3 := "manifests/kube-static-metrics.yaml"
+		YAML_FILE_PATH4 := "manifests/promethrusComponent.yaml"
 		err := applyManifestFromGitHub(REPO_URL, YAML_FILE_PATH)
 		if err != nil {
 			fmt.Println("Error applying manifest:", err)
@@ -39,6 +40,11 @@ var startCmd = &cobra.Command{
 		}
 		err3 := applyManifestFromGitHub(REPO_URL, YAML_FILE_PATH3)
 		if err3 != nil {
+			fmt.Println("Error applying manifest:", err)
+			os.Exit(1)
+		}
+		err4 := applyManifestFromGitHub(REPO_URL, YAML_FILE_PATH4)
+		if err4 != nil {
 			fmt.Println("Error applying manifest:", err)
 			os.Exit(1)
 		}

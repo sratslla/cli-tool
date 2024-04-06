@@ -22,6 +22,7 @@ var destroyCmd = &cobra.Command{
 		YAML_FILE_PATH := "manifests/kubernetes-manifests.yaml"
 		YAML_FILE_PATH2 := "manifests/loadgenerator_ui.yaml"
 		YAML_FILE_PATH3 := "manifests/kube-static-metrics.yaml"
+		YAML_FILE_PATH4 := "manifests/promethrusComponent.yaml"
 		err := destroyManifestFromGitHub(REPO_URL, YAML_FILE_PATH)
 		if err != nil {
 			fmt.Println("Error deleting manifest:", err)
@@ -34,6 +35,11 @@ var destroyCmd = &cobra.Command{
 		}
 		err3 := destroyManifestFromGitHub(REPO_URL, YAML_FILE_PATH3)
 		if err3 != nil {
+			fmt.Println("Error deleting manifest:", err)
+			os.Exit(1)
+		}
+		err4 := destroyManifestFromGitHub(REPO_URL, YAML_FILE_PATH4)
+		if err4 != nil {
 			fmt.Println("Error deleting manifest:", err)
 			os.Exit(1)
 		}
