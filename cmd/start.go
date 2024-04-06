@@ -26,6 +26,7 @@ var startCmd = &cobra.Command{
 		REPO_URL := "https://raw.githubusercontent.com/sratslla/cli-tool/main"
 		YAML_FILE_PATH := "manifests/kubernetes-manifests.yaml"
 		YAML_FILE_PATH2 := "manifests/loadgenerator_ui.yaml"
+		YAML_FILE_PATH3 := "manifests/kube-static-metrics.yaml"
 		err := applyManifestFromGitHub(REPO_URL, YAML_FILE_PATH)
 		if err != nil {
 			fmt.Println("Error applying manifest:", err)
@@ -33,6 +34,11 @@ var startCmd = &cobra.Command{
 		}
 		err2 := applyManifestFromGitHub(REPO_URL, YAML_FILE_PATH2)
 		if err2 != nil {
+			fmt.Println("Error applying manifest:", err)
+			os.Exit(1)
+		}
+		err3 := applyManifestFromGitHub(REPO_URL, YAML_FILE_PATH3)
+		if err3 != nil {
 			fmt.Println("Error applying manifest:", err)
 			os.Exit(1)
 		}
