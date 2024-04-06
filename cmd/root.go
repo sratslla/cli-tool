@@ -12,8 +12,8 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "benchmark",
-	Short: "short",
-	Long:  `long`,
+	Short: "KubeArmor Performance Benchmarking Tool",
+	Long:  `KubeArmor Performance Benchmarking Tool`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	// Run: func(cmd *cobra.Command, args []string) { },
